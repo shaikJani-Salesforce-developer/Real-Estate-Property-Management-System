@@ -1,0 +1,46 @@
+<template>
+    <lightning-card title="Add New Property">
+        <div class="slds-p-around_medium">
+
+            <lightning-input label="Property Name" required onchange={handleChange} data-field="Name"></lightning-input>
+
+            <lightning-textarea label="Address" required onchange={handleChange} data-field="Address__c"></lightning-textarea>
+
+            <lightning-input label="City" required onchange={handleChange} data-field="City__c"></lightning-input>
+
+            <lightning-input label="State" required onchange={handleChange} data-field="State__c"></lightning-input>
+
+            <lightning-input label="Postal Code" required onchange={handleChange} data-field="Postal_Code__c"></lightning-input>
+
+            <lightning-input label="Country" required onchange={handleChange} data-field="Country__c"></lightning-input>
+
+            <lightning-combobox label="Type" required options={typeOptions} onchange={handleChange} data-field="Type__c"></lightning-combobox>
+
+            <lightning-combobox label="Furnishing Status" options={furnishingOptions} onchange={handleChange} data-field="Furnishing_Status__c"></lightning-combobox>
+
+            <lightning-combobox label="Status" required options={statusOptions} onchange={handleChange} data-field="Status__c"></lightning-combobox>
+
+            <lightning-input label="Rent" type="number" required onchange={handleChange} data-field="Rent__c"></lightning-input>
+
+            <lightning-textarea label="Description" required onchange={handleChange} data-field="Description__c"></lightning-textarea>
+
+            <lightning-input
+                type="file"
+                label="Upload Property Images (required, select multiple)"
+                multiple
+                accept=".png,.jpg,.jpeg"
+                onchange={handleFilesChange}>
+            </lightning-input>
+
+            <template if:true={fileNamesDisplay}>
+                <p>Selected files: {fileNamesDisplay}</p>
+            </template>
+
+            <template if:true={errorMessage}>
+                <p style="color:red">{errorMessage}</p>
+            </template>
+
+            <lightning-button label="Save" onclick={handleSave} class="slds-m-top_medium" variant="brand"></lightning-button>
+        </div>
+    </lightning-card>
+</template>
