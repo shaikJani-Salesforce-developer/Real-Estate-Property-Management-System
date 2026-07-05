@@ -7,7 +7,7 @@ public with sharing class PropertyTriggerHandler {
         for (Property__c prop : properties) {
             tasksToInsert.add(new Task(
                 Subject = 'Generate Lease Agreement',
-                WhatId = prop.Id,              // links the task to this Property record
+                WhatId = prop.Id,          
                 ActivityDate = Date.today().addDays(3),
                 Status = 'Not Started',
                 Priority = 'High',
