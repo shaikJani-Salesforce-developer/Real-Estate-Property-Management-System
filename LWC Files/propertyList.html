@@ -1,0 +1,36 @@
+<template>
+    <lightning-card title="Property List">
+        <div class="slds-p-around_medium slds-grid slds-gutters slds-wrap">
+
+            <div class="slds-col slds-size_1-of-4">
+                <lightning-input type="number" label="Min Rent" onchange={handleMinRent}></lightning-input>
+            </div>
+
+            <div class="slds-col slds-size_1-of-4">
+                <lightning-input type="number" label="Max Rent" onchange={handleMaxRent}></lightning-input>
+            </div>
+
+            <div class="slds-col slds-size_1-of-4">
+                <lightning-combobox label="Availability Status" options={statusOptions} onchange={handleStatus}></lightning-combobox>
+            </div>
+
+            <div class="slds-col slds-size_1-of-4">
+                <lightning-combobox label="Furnishing Status" options={furnishingOptions} onchange={handleFurnishing}></lightning-combobox>
+            </div>
+
+        </div>
+
+        <lightning-datatable
+            key-field="Id"
+            data={properties}
+            columns={columns}
+            hide-checkbox-column="true">
+        </lightning-datatable>
+
+        <div class="slds-p-around_medium slds-grid slds-grid_align-spread">
+            <lightning-button label="Previous" onclick={handlePrevious} disabled={isFirstPage}></lightning-button>
+            <span class="slds-align-middle">Page {pageNumber} of {totalPages} (Total: {totalRecords})</span>
+            <lightning-button label="Next" onclick={handleNext} disabled={isLastPage}></lightning-button>
+        </div>
+    </lightning-card>
+</template>
