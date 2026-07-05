@@ -58,7 +58,7 @@ export default class CreateProperty extends LightningElement {
                 Array.from(files).map(file => this.readFileAsBase64(file))
             );
 
-            // Reassign arrays (not push) so the screen updates properly
+            
             this.base64Images = base64Results;
             this.fileNames = Array.from(files).map(file => file.name);
             this.errorMessage = '';
@@ -85,7 +85,7 @@ export default class CreateProperty extends LightningElement {
         }
 
         if (this.fileNames.length === 0) {
-            this.errorMessage = 'Please upload at least one image before saving.';
+            this.errorMessage = 'Please upload at least one image.';
             return;
         }
 
@@ -97,7 +97,7 @@ export default class CreateProperty extends LightningElement {
         .then(() => {
             this.errorMessage = '';
             alert('Property saved successfully with images!');
-            // reset form
+            
             this.propertyRecord = {};
             this.base64Images = [];
             this.fileNames = [];
