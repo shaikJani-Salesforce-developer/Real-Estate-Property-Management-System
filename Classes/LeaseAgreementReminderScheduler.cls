@@ -4,22 +4,8 @@ global class LeaseAgreementReminderScheduler implements Schedulable {
 
         Date reminderDate = Date.today().addDays(30);
 
-        List<Lease_Agreement__c> agreements = [
-
-            SELECT Id,
-                   Name,
-                   End_Date__c,
-                   Property__r.Name,
-                   Property__r.Tenant__r.Name,
-                   Property__r.Tenant__r.Email__c
-
-            FROM Lease_Agreement__c
-
-            WHERE End_Date__c = :reminderDate
-            AND Property__c != null
-            AND Property__r.Tenant__c != null
-            AND Property__r.Tenant__r.Email__c != null
-        ];
+        List<Lease_Agreement__c> agreements = [ SELECT Id,Name,End_Date__c,Property__r.Name,Property__r.Tenant__r.Name, Property__r.Tenant__r.Email__c FROM Lease_Agreement__c
+                                                  WHERE End_Date__c = :reminderDate AND Property__c != null AND Property__r.Tenant__c != null AND Property__r.Tenant__r.Email__c != null ];
 
         List<Messaging.SingleEmailMessage> emails = new List<Messaging.SingleEmailMessage>();
 
