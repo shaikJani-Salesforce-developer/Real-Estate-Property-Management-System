@@ -48,6 +48,6 @@ public class LeaseAgreementReminderSchedulerTest {
         LeaseAgreementReminderScheduler scheduler = new LeaseAgreementReminderScheduler();
         scheduler.execute(null);
         Test.stopTest();
-        System.assert(true); // just checking no exception was thrown
+        System.assert(true); 
     }
 }
